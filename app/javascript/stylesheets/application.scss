@@ -1,0 +1,23 @@
+@import '~bootstrap/scss/bootstrap';
+
+//fontawosomeのCSS設定をしているようなもの
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+/* ここの行を追加する */
+@import "custom";
+
+//この記述で stylesheets/list/new.scss に配置したファイルのcss読み込みが可能
+//ページごとにcssファイルを分けて管理できるのでメンテナンス性が高くなる
+@import "list/new";
+
+@import "list/edit";
+
+//topページのcssファイル作って読み込む設定
+@import "top";
+
+
+//以下cardモデル系
+@import "card/new";
+@import "card/show";
+@import "card/edit";
+

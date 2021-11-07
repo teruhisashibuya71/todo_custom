@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UpCareer Task</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--appliction.html.erbファイルはview表示の際にかならず読み込まれるファイル-->
+  </head>
+
+  <body>
+    <!--共通化した部分テンプレートを読み込む場合は renderを利用する-->
+    <% if current_user %>
+      <%= render 'partial/header'%>
+    <% end %>
+    
+    <!--deviseのフラッシュメッセージを表示する 注意メッセージと警告メッセージ 変数出力は「=」が必要だぞ！-->
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <!--指定のurlに対応したhtml.erbファイルをyield部分に読み込んで表示する-->
+    <%= yield %>
+  </body>
+</html>

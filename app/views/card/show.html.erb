@@ -1,0 +1,26 @@
+<div class='carddetailPage'>
+  <div class="container">
+    <div class="cardContents">
+      <div class="cardContents_title">
+        <div>タイトル</div>
+        <h2><%= @card.title %></h2>
+      </div>
+      <div class="cardContents_memo">
+        <div>メモ</div>
+        <div><%= @card.memo %></div>
+      </div>
+      <div class="cardContents_listStatus">
+        <div>リスト名</div>
+        <!--アソシエーションのあるモデルの情報は 「インスタンス変数.モデル名」 で相互に取得可能 -->
+        <div><%= @card.list.title %></div>
+      </div>
+      
+      <!--編集画面への移動ボタンを追加-->
+      <div class="cardContents_btnArea">
+        <!--パスには2つの引数を渡す カードの更新にはリスト情報と カード情報の2つが必要-->
+        <%= link_to '編集する', edit_list_card_path(@card.list, @card), class: "edit_btn" %>
+        <%= link_to '削除する', list_card_path(@card.list, @card), class: "text-danger delete_btn", method: :delete , data: { confirm: "このカードを削除して大丈夫ですか?" }  %>
+      </div>
+    </div>
+  </div>
+</div>
