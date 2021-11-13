@@ -6,7 +6,8 @@
 
 <!--ログイン画面のリンク編集-->
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p class="acountPage_link"><%= link_to "アカウントを作成", new_session_path(resource_name) %></p>
+  <!--<p class="acountPage_link"><%= link_to "アカウントを作成",  new_session_path(resource_name) %></p>-->
+  <p class="acountPage_link"><%= link_to "アカウントを作成",  new_user_registration_path %></p>
 <% end %>
 
 <!--ログイン→リカバリー画面の場合-->

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   #dependent(依存)で親が消えたら子も消える  userが消えたらlistも消える
   has_many :lists, dependent: :destroy 
 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

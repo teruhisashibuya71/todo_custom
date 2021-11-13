@@ -1,3 +1,12 @@
+<div class="search-form-area">
+  <div class="search-form text-center">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索", {class: "for-inline"} %>
+    <% end %>
+  </div>
+</div>
+
 <div class="topPage">
   <div class="listWrapper">
     <% @lists.each do |list| %>
