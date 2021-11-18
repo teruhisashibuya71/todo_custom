@@ -5,10 +5,17 @@
   .search-form {
     max-width: 50%;
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
-    .for-inline {
-      display: inline;
-      margin-left: 30px;
+    input#keyword {
+      border-radius:14px;
+      box-shadow: none;
+    }
+
+    .search-button {
+      margin-left: 20px;
+      border-radius: 14px;
     }
 
   }
@@ -26,10 +33,11 @@
     align-items: baseline;
     .list {
       position: relative;
-      background: #AEACAD;
+      background: #ebecf0;
       padding: 10px;
       margin-left: 20px;
       min-width: 250px;
+      border-radius: 4px;
       &:last-child {
         margin-right: 20px;
       }
@@ -44,8 +52,8 @@
         }
         &_action {
           .fa-pen, .fa-trash {
-            font-size: 18px;
-            color: #8c8c8c;
+            font-size: 16px;
+            color: #6e778a;
           }
           .fa-trash {
             margin-right: 10px;

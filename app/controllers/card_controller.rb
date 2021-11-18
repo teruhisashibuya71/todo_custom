@@ -48,19 +48,28 @@ class CardController < ApplicationController
     redirect_to :root
   end
 
-
+  #検索用のメソッド
+  def search
+    #入力されたキーワードを変数へ
+    keyword = params[:keyword]
+    #user_idと検索キーワードを元にDBから値を取得
+    @search_result_cards = Card.where('user_id = ? and title like?', current_user.id, "%#{keyword}%")
+    #現在の出力形式上、Listをもう一度取得する必要あり
+    @lists = List.where(user: current_user).order("created_at ASC")
+    #検索結果をindex.htmlに表示する
+    render "top/index"
+  end
 
 
   private 
-  #データベースへの値の入力を許可するメソッド
+  #データベースへの値の入力を許可するメソッド 基本的に1つのコントローラーに1つは必ず書くことになるはず
   def card_params
     #permitで3つのカラムを全て変更できるように設定
-    params.require(:card).permit(:title, :memo, :list_id)
+    params.require(:card).permit(:title, :memo, :list_id, :user_id)
   end
 
   def set_card
     @card = Card.find_by(id: params[:id])
   end
-
 
 end

@@ -17,4 +17,7 @@ class User < ApplicationRecord
   #validates :name, :precence => true,...とも書ける シンボルの記法で書くか、一般的なハッシュの記法で書くか
   validates :name, presence: true, length: {maximum: 20}
 
+  #画像のアップロード機能の追加 モデルに対してアップローダーを取り付け
+  mount_uploader :image, ImageUploader
+
 end

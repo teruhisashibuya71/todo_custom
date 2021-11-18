@@ -1,8 +1,8 @@
 <div class="search-form-area">
   <div class="search-form text-center">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索", {class: "for-inline"} %>
+    <%= form_with url: search_path, method: :post, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, :placeholder => "カード名を入力" %>
+      <%= f.submit "検索", {class: "search-button"} %>
     <% end %>
   </div>
 </div>
@@ -24,7 +24,7 @@
             <!--link_toをブロックで使用する場合は書き方が異なるので注意  pathの引数は2つ指定することも可能-->
             <%= link_to list_card_path(list, card), class:"cardDetail_link" do %>
               <div class="card">
-                <h3 class="card_title"><%= card.title %></h3>
+                <h5 class="card_title"><%= card.title %></h5>
                 <% if card.memo.size > 0 %>
                   <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
                 <% end %>
@@ -34,10 +34,16 @@
 
           <div class="addCard">
             <i class="far fa-plus-square"></i>
-            <%= link_to "さらにカードを追加", new_list_card_path(list), class: "addCard_link" %>
+            <%= link_to "カードを追加", new_list_card_path(list), class: "addCard_link" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+
+  <!--検索結果を表示してみる-->
+  <% @search_result_cards.each do |search_result_card| %>
+    <p><%= search_result_card.title %></p>
+  <% end %>
+
 </div>

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+#画像UP
+gem 'carrierwave' #UPload用
+gem 'rmagick' #リサイズ用
 
 ruby '2.7.4'
 #deviseを日本語化するためのgem

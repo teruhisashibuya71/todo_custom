@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   
   #サインアップとサインインのルーティングを作っている users/sign_up など自動でURLが設定される
+  # userにするべきであった...
   devise_for :users
   
   #topコントローラーのインデックスアクションアクションを指定
   #rootにする場合はurlではなくアクション指定なので # を使う
   root 'top#index'
+  
+  #検索用のURLとアクションを設定 verb コントローラー名#アクション名
+  post 'search', to: 'card#search'
 
   #listを作るためのルーティングを設定 new画面
   #get 'list/new'
