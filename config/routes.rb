@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
   
   #サインアップとサインインのルーティングを作っている users/sign_up など自動でURLが設定される
-  # userにするべきであった...
-  devise_for :users
+  #usersフォルダ配下のコントローラーを使用するように指定してルーティングを変える 対応するコントローラーを変えている
+  # Prefix→OO系は: "OOディレクトリの/OOコントローラーを対応させる  という意味
+  #
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations",
+  }
+  #users/registrations系にshow画面へのrouteingを追加
+  #userモデル用のコントローラーのshowアクションを割り当てるために必要な処理
+  devise_scope :user do
+    get "/users/show", to: "users/registrations#show"
+  end
+
+  
+  
   
   #topコントローラーのインデックスアクションアクションを指定
   #rootにする場合はurlではなくアクション指定なので # を使う
   root 'top#index'
   
-  #検索用のURLとアクションを設定 verb コントローラー名#アクション名
+  #検索用のURLとアクションを設定 「verb 'prefix', to: 'コントローラー名#アクション名'」
   post 'search', to: 'card#search'
-
-  #listを作るためのルーティングを設定 new画面
-  #get 'list/new'
-  #post 'list/create'
 
   #resoucesを使う場合は以下のように書ける resouces コントローラー名
   resources :list, only: %i(new create edit update destroy) do

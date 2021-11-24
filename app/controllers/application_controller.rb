@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
     #新規登録画面でnameカラムの取り扱いを許可する
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     #アカウント情報更新画面でnameカラムの取り扱いを許可する
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    #画像のアップロードもできるようにimageカラムも加える
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image])
   end
   
 
